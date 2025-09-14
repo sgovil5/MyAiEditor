@@ -460,43 +460,41 @@ Happy coding on mobile! 🎉`
         )}
 
         {/* Main Content Area */}
-        <View style={[styles.mainContent, showFileTree && styles.mainContentWithSidebar]}>
-          {/* Editor Section */}
-          <View style={[styles.editorContainer, showTerminal && styles.editorWithTerminal]}>
-            {currentFile && (
-              <View style={styles.currentFileBar}>
-                <Text style={styles.currentFile}>
-                  {connectionInfo?.source === 'remote' ? '🌐' : '📁'} {currentFile.split('/').pop()}
-                </Text>
-                {connectionInfo?.source === 'remote' && (
-                  <Text style={styles.remoteIndicator}>REMOTE</Text>
-                )}
-              </View>
-            )}
-            <CodeEditor
-              initialCode={loadedFileContent}
-              onCodeChange={setCode}
-              fileName={currentFile ? currentFile.split('/').pop() : undefined}
-            />
-          </View>
-
-          {/* Terminal Section */}
-          {showTerminal && (
-            <View style={styles.terminalContainer}>
-              <KeyboardAvoidingView
-                style={{ flex: 1 }}
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 80}
-                enabled={true}
-              >
-                <Terminal
-                  onExecuteCommand={executeCommand}
-                  isConnected={connectionInfo?.source === 'remote' && connectionInfo?.connected}
-                  currentPath={currentDirectory}
-                  initialWorkingDirectory={currentDirectory}
-                  onFileCreated={handleFileCreated}
-                />
-              </KeyboardAvoidingView>
+        <View style={[styles.mainContent, showFileTree && !showTerminal && styles.mainContentWithSidebar]}>
+          {showTerminal ? (
+            /* Terminal Full Screen */
+            <KeyboardAvoidingView
+              style={styles.fullScreenTerminal}
+              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+              keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 40}
+              enabled={true}
+            >
+              <Terminal
+                onExecuteCommand={executeCommand}
+                isConnected={connectionInfo?.source === 'remote' && connectionInfo?.connected}
+                currentPath={currentDirectory}
+                initialWorkingDirectory={currentDirectory}
+                onFileCreated={handleFileCreated}
+              />
+            </KeyboardAvoidingView>
+          ) : (
+            /* Editor Section */
+            <View style={styles.editorContainer}>
+              {currentFile && (
+                <View style={styles.currentFileBar}>
+                  <Text style={styles.currentFile}>
+                    {connectionInfo?.source === 'remote' ? '🌐' : '📁'} {currentFile.split('/').pop()}
+                  </Text>
+                  {connectionInfo?.source === 'remote' && (
+                    <Text style={styles.remoteIndicator}>REMOTE</Text>
+                  )}
+                </View>
+              )}
+              <CodeEditor
+                initialCode={loadedFileContent}
+                onCodeChange={setCode}
+                fileName={currentFile ? currentFile.split('/').pop() : undefined}
+              />
             </View>
           )}
         </View>
@@ -594,13 +592,8 @@ const styles = StyleSheet.create({
   editorContainer: {
     flex: 1,
   },
-  editorWithTerminal: {
-    flex: 0.65,
-  },
-  terminalContainer: {
-    flex: 0.35,
-    borderTopWidth: 1,
-    borderTopColor: '#444',
+  fullScreenTerminal: {
+    flex: 1,
     backgroundColor: '#1a1a1a',
   },
   currentFileBar: {
