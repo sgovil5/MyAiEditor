@@ -38,13 +38,7 @@ const SSHConnection: React.FC<SSHConnectionProps> = ({
       port: '22',
       username: 'w-siqim-sc2-68efdcc59f1e49919d7b53423b35bc37',
       password: '',
-      privateKey: `-----BEGIN OPENSSH PRIVATE KEY-----
-b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-QyNTUxOQAAACB/2lM06lz3YSr2NhZBREQBZoKSOM6muTYcBaSAwHrUjgAAAJhtZv0EbWb9
-BAAAAAtzc2gtZWQyNTUxOQAAACB/2lM06lz3YSr2NhZBREQBZoKSOM6muTYcBaSAwHrUjg
-AAAEAlViWavMFxkbX5kyUDVMMsaWAS1ZF0so8ao7bIo+WtVn/aUzTqXPdhKvY2FkFERAFm
-gpI4zqa5NhwFpIDAetSOAAAAFHNpcWkubWlhb0BnYXRlY2guZWR1AQ==
------END OPENSSH PRIVATE KEY-----`,
+      privateKey: ``,
       initialPath: '/home/jovyan/shared/siqimiao1/sc/workspace/projects/HEPTv2/src',
     });
     setAuthMethod('key');
