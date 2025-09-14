@@ -1,0 +1,58 @@
+{
+  "app": {
+    "name": "MyAiEditor Sample Project",
+    "version": "1.0.0",
+    "description": "A sample project for testing mobile code editing capabilities"
+  },
+  "editor": {
+    "theme": "monokai",
+    "fontSize": 14,
+    "tabSize": 2,
+    "wordWrap": true,
+    "lineNumbers": true,
+    "autoComplete": true,
+    "syntaxHighlighting": true
+  },
+  "features": {
+    "fileExplorer": true,
+    "searchAndReplace": false,
+    "gitIntegration": false,
+    "terminalEmulator": false,
+    "livePreview": false
+  },
+  "supportedLanguages": [
+    "javascript",
+    "typescript",
+    "json",
+    "markdown",
+    "css",
+    "html",
+    "xml",
+    "yaml"
+  ],
+  "fileAssociations": {
+    ".js": "javascript",
+    ".jsx": "javascript",
+    ".ts": "typescript",
+    ".tsx": "typescript",
+    ".json": "json",
+    ".md": "markdown",
+    ".css": "css",
+    ".html": "html",
+    ".htm": "html",
+    ".xml": "xml",
+    ".yaml": "yaml",
+    ".yml": "yaml"
+  },
+  "development": {
+    "debugMode": false,
+    "verboseLogging": false,
+    "hotReload": true
+  },
+  "ui": {
+    "darkMode": true,
+    "compactMode": false,
+    "showMinimap": false,
+    "showRuler": true
+  }
+}
